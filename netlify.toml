@@ -7,16 +7,7 @@
   node_bundler = "esbuild"
 
 [[redirects]]
-  from = "/v1/*"
-  to = "/.netlify/functions/api/v1/:splat"
+  from = "/*"
+  to = "/.netlify/functions/api/:splat"
   status = 200
-
-[[redirects]]
-  from = "/health"
-  to = "/.netlify/functions/api/health"
-  status = 200
-
-[[redirects]]
-  from = "/docs/*"
-  to = "/.netlify/functions/api/docs/:splat"
-  status = 200
+  force = true
