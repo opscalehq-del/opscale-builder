@@ -103,15 +103,15 @@ export async function runRoutes(app: FastifyInstance) {
       .all(runId) as Array<{ level: string; message: string; created_at: string }>;
 
     for (const log of historical) {
-      reply.raw.write(`data: ${JSON.stringify(log)}\\n\\n`);
+      reply.raw.write(`data: ${JSON.stringify(log)}\n\n`);
     }
 
     const unsubscribe = subscribeRunLogs(runId, (event) => {
-      reply.raw.write(`data: ${JSON.stringify(event)}\\n\\n`);
+      reply.raw.write(`data: ${JSON.stringify(event)}\n\n`);
     });
 
     const ping = setInterval(() => {
-      reply.raw.write(': ping\\n\\n');
+      reply.raw.write(': ping\n\n');
     }, 15_000);
 
     req.raw.on('close', () => {
